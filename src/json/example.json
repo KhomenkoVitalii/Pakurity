@@ -15,7 +15,10 @@
             "in": "query",
             "description": "Limit the number of results",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
             }
           },
           {
@@ -24,6 +27,67 @@
             "description": "Filter users by name",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort users by a specific field",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "name"
+              ],
+              "default": "id"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order of sorting (asc or desc)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "asc"
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "description": "Filter users by activity",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "List of user IDs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          },
+          {
+            "name": "options",
+            "in": "query",
+            "description": "Additional options",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "verbose": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "string"
+                }
+              }
             }
           }
         ],
@@ -38,11 +102,13 @@
                     "type": "object",
                     "properties": {
                       "id": {
-                        "type": "integer",
-                        "format": "int64"
+                        "type": "integer"
                       },
                       "name": {
                         "type": "string"
+                      },
+                      "active": {
+                        "type": "boolean"
                       }
                     }
                   }

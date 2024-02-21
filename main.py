@@ -1,8 +1,9 @@
+import logging
 from src.modify_json import add_examples_to_parameters
 from src.patch_script import patch_openapi_script
-import logging
 
 logging.basicConfig(level=logging.INFO)
+is_patched_script_available = False
 
 
 def initialize():

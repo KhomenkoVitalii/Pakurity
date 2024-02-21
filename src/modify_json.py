@@ -6,7 +6,14 @@ logging.basicConfig(level=logging.INFO)
 
 faker = Faker()
 
-DATA_TYPES = {'string', 'number', 'integer', 'boolean'}
+# Define additional parameter types
+DATA_TYPES = {'string', 'number', 'integer', 'boolean', 'array', 'object'}
+
+# Example values for additional parameter types
+EXAMPLE_VALUES = {
+    'array': [faker.word() for _ in range(3)],
+    'object': {'key1': faker.word(), 'key2': faker.word()}
+}
 
 
 def get_fake_data(data_type, name):
@@ -18,7 +25,7 @@ def get_fake_data(data_type, name):
         name (str): The name of the parameter.
 
     Returns:
-        str or int or float or bool: The fake data.
+        str or int or float or bool or list or dict: The fake data.
     """
     if data_type == 'string':
         if name == 'name':
@@ -30,6 +37,10 @@ def get_fake_data(data_type, name):
         return faker.random_int()
     elif data_type == 'boolean':
         return faker.boolean()
+    elif data_type == 'array':
+        return EXAMPLE_VALUES['array']
+    elif data_type == 'object':
+        return EXAMPLE_VALUES['object']
     else:
         raise ValueError(f"Invalid data type: {data_type}")
 
