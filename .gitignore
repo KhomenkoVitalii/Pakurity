@@ -1,4 +1,5 @@
 env
 *.log
-*logs*
+logs
 *.pyc
+.hintrc
