@@ -24,3 +24,8 @@ https://swagger.io/docs/specification/adding-examples/
 
 
 4. Create a script which patches your OpenAPI parsing Python script using AST approach and changes the example strings to some other.
+
+
+Branches:
+1. 'working_with_airflow' - branch with first and second tasks
+2. 'working_with_open_api' - branch with third and fourth tasks
